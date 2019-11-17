@@ -1,6 +1,7 @@
 import axios from "axios";
 import React from "react";
 import auth from ".././auth";
+import OneRecipe from "./OneRecipe";
 
 class Recipe extends React.Component {
   constructor(props) {
@@ -23,9 +24,12 @@ class Recipe extends React.Component {
   }
 
   render() {
+    const { results } = this.state;
     return (
       <div>
-        <div>{this.state.results.map(result => result.recipe.label)}</div>
+        {results.map(result => (
+          <OneRecipe key={result.label} result={result} />
+        ))}
       </div>
     );
   }
